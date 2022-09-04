@@ -38,6 +38,9 @@ public class UsuarioController {
         usuarioDeBD.setNombreUsuario(usuario.getNombreUsuario());
         usuarioDeBD.setEmailUsuario(usuario.getEmailUsuario());
         usuarioDeBD.setPassword(usuario.getPassword());
+        for(Viaje viaje : usuarioDeBD.viajes) {
+            usuarioDeBD.addViajes(viaje);
+        }
         return usuarioRepository.save(usuarioDeBD);
     }
 

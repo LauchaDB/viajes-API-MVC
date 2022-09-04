@@ -1,33 +1,33 @@
 package com.proyectoViajes.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name= "tbusuarios")
 public class Usuario {
 
     @Id
-    @Column(name = "id_us")
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long idUsuario;
 
-    @Column(name = "nombre_us")
     private String nombreUsuario;
 
-    @Column(name = "email_us")
     private String emailUsuario;
 
-    @Column(name = "password_us")
     private String password;
 
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "tbviajes_guardados_usuarios", joinColumns = {
+            @JoinColumn(name = "idUsuario", nullable = false, updatable = false) },
+            inverseJoinColumns = { @JoinColumn(name = "idViaje",
+                    nullable = false, updatable = false) })
+    public List<Viaje> viajes;
 
-    //constructor vasio
     public Usuario(){
     }
 
-
-    //getters and setters
-    public long getIdUsuario() {
+     public long getIdUsuario() {
         return idUsuario;
     }
 
@@ -57,5 +57,10 @@ public class Usuario {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+
+    public void addViajes(Viaje viaje) {
+        viajes.add(viaje);
     }
 }

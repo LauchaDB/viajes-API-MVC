@@ -32,6 +32,6 @@ public class ViajeServiceImp implements ViajeService{
     @Override
     public Viaje listViajeById(long id) {
         Optional<Viaje> optionalViaje = viajeRepository.findById(id);
-        return optionalViaje.isEmpty() ? null : optionalViaje.get();
+        return optionalViaje.isPresent() ? null : optionalViaje.get();
     }
 }

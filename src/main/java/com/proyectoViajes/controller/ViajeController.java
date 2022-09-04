@@ -1,5 +1,6 @@
 package com.proyectoViajes.controller;
 
+import com.proyectoViajes.model.Usuario;
 import com.proyectoViajes.model.Viaje;
 import com.proyectoViajes.repository.ViajeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +34,9 @@ public class ViajeController {
         Viaje viajeDeBD = viajeRepository.findById(id).orElseThrow(RuntimeException::new);
         viajeDeBD.setNombreViaje(viaje.getNombreViaje());
         viajeDeBD.setDescripcionViaje(viaje.getDescripcionViaje());
-        viajeDeBD.setId_us(viaje.getId_us());
+        for(Usuario usr : viajeDeBD.usuarios) {
+            viajeDeBD.addUsuario(usr);
+        }
         return viajeRepository.save(viajeDeBD);
     }
 

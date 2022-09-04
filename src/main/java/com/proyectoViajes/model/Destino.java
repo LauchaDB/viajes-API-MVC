@@ -8,29 +8,23 @@ import java.awt.*;
 public class Destino {
 
     @Id
-    @Column(name = "id_dest")
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idDest;
 
-    @Column(name = "provincia_dest")
     @Enumerated(EnumType.STRING)
     private Provincias provinciaDestino;
 
-    @Column(name = "ciudad_dest")
     private String ciudadDestino;
 
-    @Column(name = "descrip_dest")
     private String descripcionDestino;
 
-    @Column(name = "id_viaje")
-    private int idViaje;
+    @OneToOne
+    @JoinColumn(name = "viaje")
+    private Viaje viaje;
 
-    //contructor
     public Destino(){
     }
 
-
-    //getters and setters
     public long getIdDest() {
         return idDest;
     }
@@ -63,11 +57,11 @@ public class Destino {
         this.descripcionDestino = descripcionDestino;
     }
 
-    public int getIdViaje() {
-        return idViaje;
+    public Viaje getViaje() {
+        return viaje;
     }
 
-    public void setIdViaje(int idViaje) {
-        this.idViaje = idViaje;
+    public void setViaje(Viaje viaje) {
+        this.viaje = viaje;
     }
 }

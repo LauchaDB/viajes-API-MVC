@@ -1,32 +1,27 @@
 package com.proyectoViajes.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name= "tbviajes")
 public class Viaje {
 
     @Id
-    @Column(name = "id_viaje")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idViaje;
 
-    @Column(name = "nombre_viaje")
     private String nombreViaje;
 
-    @Column(name = "descrip_viaje")
     private String descripcionViaje;
 
-    @Column(name = "id_us")
-    private int id_us;
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "viajes")
+    public List<Usuario> usuarios = new ArrayList<>();
 
-
-    //contructor
     public Viaje(){
     }
 
-
-    //getters and setters
     public void setIdViaje(long idViaje) {
         this.idViaje = idViaje;
     }
@@ -51,11 +46,8 @@ public class Viaje {
         return descripcionViaje;
     }
 
-    public void setId_us(int id_us) {
-        this.id_us = id_us;
+    public void addUsuario(Usuario usr) {
+        usuarios.add(usr);
     }
 
-    public int getId_us() {
-        return id_us;
-    }
 }

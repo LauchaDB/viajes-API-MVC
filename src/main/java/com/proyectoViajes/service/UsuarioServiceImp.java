@@ -32,6 +32,6 @@ public class UsuarioServiceImp implements UsuarioService{
     @Override
     public Usuario listUsuarioById(long id) {
         Optional<Usuario> optionalUsuario = usuarioRepository.findById(id);
-        return optionalUsuario.isEmpty() ? null : optionalUsuario.get();
+        return optionalUsuario.isPresent() ? null : optionalUsuario.get();
     }
 }

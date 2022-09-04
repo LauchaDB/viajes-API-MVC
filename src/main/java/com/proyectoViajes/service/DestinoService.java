@@ -8,8 +8,11 @@ import java.util.List;
 @Service
 public interface DestinoService {
 
-    public void guardar(Destino destino);
-    public void eliminar(Destino destino);
-    public List<Destino> listar();
+
+    public List<Destino> listAll();
     public Destino listDestinoById(long id);
+    public Destino update(long id, Destino destino);
+    public Destino save(Destino destino);
+    public void delete(long id);
+    List<Destino> destinosViaje(Long id);
 }
