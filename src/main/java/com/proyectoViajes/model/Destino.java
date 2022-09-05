@@ -1,5 +1,7 @@
 package com.proyectoViajes.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.awt.*;
 
@@ -12,11 +14,11 @@ public class Destino {
     private long idDest;
 
     @Enumerated(EnumType.STRING)
-    private Provincias provinciaDestino;
+    private Provincias provinciaDest;
 
-    private String ciudadDestino;
+    private String ciudadDest;
 
-    private String descripcionDestino;
+    private String descripDest;
 
     @OneToOne
     @JoinColumn(name = "viaje")
@@ -34,27 +36,27 @@ public class Destino {
     }
 
     public Provincias getProvinciaDestino() {
-        return provinciaDestino;
+        return provinciaDest;
     }
 
-    public void setProvinciaDestino(Provincias provinciaDestino) {
-        this.provinciaDestino = provinciaDestino;
+    public void setProvinciaDestino(Provincias provinciaDest) {
+        this.provinciaDest = provinciaDest;
     }
 
     public String getCiudadDestino() {
-        return ciudadDestino;
+        return ciudadDest;
     }
 
-    public void setCiudadDestino(String ciudadDestino) {
-        this.ciudadDestino = ciudadDestino;
+    public void setCiudadDestino(String ciudadDest) {
+        this.ciudadDest = ciudadDest;
     }
 
     public String getDescripcionDestino() {
-        return descripcionDestino;
+        return descripDest;
     }
 
-    public void setDescripcionDestino(String descripcionDestino) {
-        this.descripcionDestino = descripcionDestino;
+    public void setDescripcionDestino(String descripDest) {
+        this.descripDest = descripDest;
     }
 
     public Viaje getViaje() {

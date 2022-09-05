@@ -17,33 +17,33 @@ import java.util.List;
 public class DestinoController {
 
     @Autowired
-    private DestinoService destinoService;
+    private DestinoServiceImp destinoServiceImp;
 
     @GetMapping("")
     public List<Destino> destinos(){
-        return destinoService.listAll();
+        return destinoServiceImp.listAll();
     }
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/create")
     public Destino create(@RequestBody Destino destino){
-        return destinoService.save(destino);
+        return destinoServiceImp.save(destino);
     }
 
     @PutMapping("/actualizar/{id}")
     public Destino update(@PathVariable Long id, @RequestBody Destino destino){
-        return destinoService.update(id, destino);
+        return destinoServiceImp.update(id, destino);
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/eliminar/{id}")
     public void delete(@PathVariable Long id){
-        destinoService.delete(id);
+        destinoServiceImp.delete(id);
 
     }
 
     @GetMapping("/destinosViaje/{id}")
     public List<Destino> destinosViaje(@PathVariable Long id){
-        return destinoService.destinosViaje(id);
+        return destinoServiceImp.destinosViaje(id);
     }
 }

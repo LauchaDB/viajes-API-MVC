@@ -2,12 +2,12 @@ package com.proyectoViajes.service;
 
 import com.proyectoViajes.model.Destino;
 import com.proyectoViajes.repository.DestinoRepository;
-import com.sun.media.jfxmedia.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.logging.Logger;
 
 @Service
 public class DestinoServiceImp implements DestinoService{
@@ -49,7 +49,7 @@ public class DestinoServiceImp implements DestinoService{
         try {
             destinoRepository.delete(destinoDeBD);
         }catch(Exception e){
-            Logger.logMsg(1, e.getMessage());
+            //Logger.logMsg(1, e.getMessage());
         }
 
     }

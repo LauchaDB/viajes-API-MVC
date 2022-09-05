@@ -1,5 +1,7 @@
 package com.proyectoViajes.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,9 +16,10 @@ public class Viaje {
 
     private String nombreViaje;
 
-    private String descripcionViaje;
+    private String descripViaje;
 
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "viajes")
+    @JsonIgnore
     public List<Usuario> usuarios = new ArrayList<>();
 
     public Viaje(){
@@ -39,11 +42,11 @@ public class Viaje {
     }
 
     public void setDescripcionViaje(String descripcionViaje) {
-        this.descripcionViaje = descripcionViaje;
+        this.descripViaje = descripcionViaje;
     }
 
     public String getDescripcionViaje() {
-        return descripcionViaje;
+        return descripViaje;
     }
 
     public void addUsuario(Usuario usr) {
