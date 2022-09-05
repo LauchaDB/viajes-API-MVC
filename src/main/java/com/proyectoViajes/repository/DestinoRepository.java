@@ -9,9 +9,5 @@ import java.util.List;
 @Component
 public interface DestinoRepository extends JpaRepository<Destino, Long> {
 
-    default List<Destino> destinosViaje(int idViaje){
-        List<Destino> destinos = findAll();
-        destinos.removeIf(destino -> destino.getIdViaje() != idViaje);
-        return destinos;
-    }
+
 }

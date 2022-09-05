@@ -7,14 +7,11 @@ import javax.persistence.*;
 public class ViajeGuardadoUsuario {
 
     @Id
-    @Column(name = "id_viaje_guardado")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idViajeGuardado;
 
-    @Column(name = "id_usuario")
     private int idUsuario;
 
-    @Column(name = "id_viaje")
     private int idViaje;
 
     public ViajeGuardadoUsuario() {

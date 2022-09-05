@@ -5,6 +5,7 @@ import com.proyectoViajes.model.Viaje;
 import com.proyectoViajes.repository.UsuarioRepository;
 import com.proyectoViajes.repository.ViajeRepository;
 import com.proyectoViajes.service.UsuarioService;
+import com.proyectoViajes.service.UsuarioServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -19,32 +20,27 @@ import java.util.List;
 public class UsuarioController {
 
     @Autowired
-    private UsuarioRepository usuarioRepository;
+    private UsuarioServiceImp usuarioServiceImp;
 
     @GetMapping("")
     public List<Usuario> home(){
-        return usuarioRepository.findAll();
+        return usuarioServiceImp.findAll();
     }
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/crate")
     public Usuario create(@RequestBody Usuario usuario){
-        return usuarioRepository.save(usuario);
+        return usuarioServiceImp.save(usuario);
     }
 
     @PutMapping("/actualizar/{id}")
     public Usuario update(@PathVariable Long id, @RequestBody Usuario usuario){
-        Usuario usuarioDeBD = usuarioRepository.findById(id).orElseThrow(RuntimeException::new);
-        usuarioDeBD.setNombreUsuario(usuario.getNombreUsuario());
-        usuarioDeBD.setEmailUsuario(usuario.getEmailUsuario());
-        usuarioDeBD.setPassword(usuario.getPassword());
-        return usuarioRepository.save(usuarioDeBD);
+        return usuarioServiceImp.update(id, usuario);
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/eliminar/{id}")
     public void delete(@PathVariable Long id){
-        Usuario usuarioDeBD = usuarioRepository.findById(id).orElseThrow(RuntimeException::new);
-        usuarioRepository.delete(usuarioDeBD);
+        usuarioServiceImp.delete(id);
     }
 }

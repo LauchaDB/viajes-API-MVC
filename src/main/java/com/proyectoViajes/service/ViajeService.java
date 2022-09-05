@@ -1,6 +1,7 @@
 package com.proyectoViajes.service;
 
 
+import com.proyectoViajes.model.Destino;
 import com.proyectoViajes.model.Viaje;
 import org.springframework.stereotype.Service;
 
@@ -9,8 +10,9 @@ import java.util.List;
 @Service
 public interface ViajeService {
 
-    public void guardar(Viaje viaje);
-    public void eliminar(Viaje viaje);
-    public List<Viaje> listar();
-    public Viaje listViajeById(long id);
+    public Viaje save(Viaje viaje);
+    public void delete(long id);
+    public Viaje update(long id, Viaje viaje);
+    public List<Viaje> findAll();
+    public Viaje findById(long id);
 }

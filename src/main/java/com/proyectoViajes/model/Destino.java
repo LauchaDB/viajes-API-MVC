@@ -1,5 +1,7 @@
 package com.proyectoViajes.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.awt.*;
 
@@ -8,29 +10,23 @@ import java.awt.*;
 public class Destino {
 
     @Id
-    @Column(name = "id_dest")
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idDest;
 
-    @Column(name = "provincia_dest")
     @Enumerated(EnumType.STRING)
-    private Provincias provinciaDestino;
+    private Provincias provinciaDest;
 
-    @Column(name = "ciudad_dest")
-    private String ciudadDestino;
+    private String ciudadDest;
 
-    @Column(name = "descrip_dest")
-    private String descripcionDestino;
+    private String descripDest;
 
-    @Column(name = "id_viaje")
-    private int idViaje;
+    @OneToOne
+    @JoinColumn(name = "viaje")
+    private Viaje viaje;
 
-    //contructor
     public Destino(){
     }
 
-
-    //getters and setters
     public long getIdDest() {
         return idDest;
     }
@@ -40,34 +36,34 @@ public class Destino {
     }
 
     public Provincias getProvinciaDestino() {
-        return provinciaDestino;
+        return provinciaDest;
     }
 
-    public void setProvinciaDestino(Provincias provinciaDestino) {
-        this.provinciaDestino = provinciaDestino;
+    public void setProvinciaDestino(Provincias provinciaDest) {
+        this.provinciaDest = provinciaDest;
     }
 
     public String getCiudadDestino() {
-        return ciudadDestino;
+        return ciudadDest;
     }
 
-    public void setCiudadDestino(String ciudadDestino) {
-        this.ciudadDestino = ciudadDestino;
+    public void setCiudadDestino(String ciudadDest) {
+        this.ciudadDest = ciudadDest;
     }
 
     public String getDescripcionDestino() {
-        return descripcionDestino;
+        return descripDest;
     }
 
-    public void setDescripcionDestino(String descripcionDestino) {
-        this.descripcionDestino = descripcionDestino;
+    public void setDescripcionDestino(String descripDest) {
+        this.descripDest = descripDest;
     }
 
-    public int getIdViaje() {
-        return idViaje;
+    public Viaje getViaje() {
+        return viaje;
     }
 
-    public void setIdViaje(int idViaje) {
-        this.idViaje = idViaje;
+    public void setViaje(Viaje viaje) {
+        this.viaje = viaje;
     }
 }
