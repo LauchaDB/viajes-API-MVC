@@ -2,6 +2,7 @@ package com.proyectoViajes.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -14,7 +15,6 @@ public class Travels {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(length = 36, name = "id")
     private long id;
 
     @Column(name = "name")

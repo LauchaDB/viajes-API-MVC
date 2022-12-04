@@ -1,7 +1,11 @@
 package com.proyectoViajes.service;
 
 import com.proyectoViajes.model.Travels;
+import com.proyectoViajes.model.Users;
+import com.proyectoViajes.model.dto.CreateRequestDTO;
 import com.proyectoViajes.repository.TravelRepository;
+import com.proyectoViajes.repository.UserRepository;
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,10 +17,20 @@ public class TravelServiceImp implements TravelService {
 
     @Autowired
     private TravelRepository travelRepository;
+    @Autowired
+    private UserRepository userRepository;
 
     @Override
-    public Travels save(Travels travels) {
-        return travelRepository.save(travels);
+    public Travels createTravel(CreateRequestDTO travels) {
+        Optional<Users> user = userRepository.findById(Long.parseLong(travels.getIdUser()));
+
+        Travels travel = new Travels();
+        //travel.setId(1L);
+        travel.setDescription(travels.getDescription());
+        travel.setName(travels.getName());
+        travel.setUsers(user.isPresent() ? user.get() : null );
+
+        return travelRepository.save(travel);
     }
 
     @Override
