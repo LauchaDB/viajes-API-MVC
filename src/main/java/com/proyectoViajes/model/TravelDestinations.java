@@ -22,7 +22,7 @@ public class TravelDestinations {
 
     @OneToOne
     @JoinColumn(name = "travel")
-    private Viaje travel;
+    private Travels travel;
 
     public TravelDestinations() { }
 
@@ -58,11 +58,11 @@ public class TravelDestinations {
         this.description = description;
     }
 
-    public Viaje getTravel() {
+    public Travels getTravel() {
         return travel;
     }
 
-    public void setTravel(Viaje travel) {
+    public void setTravel(Travels travel) {
         this.travel = travel;
     }
 }
