@@ -1,6 +1,7 @@
 package com.proyectoViajes.controller;
 
 import com.proyectoViajes.model.Viaje;
+import com.proyectoViajes.model.ViajeGuardadoUsuario;
 import com.proyectoViajes.repository.ViajeRepository;
 import com.proyectoViajes.service.ViajeService;
 import com.proyectoViajes.service.ViajeServiceImp;
@@ -40,4 +41,9 @@ public class ViajeController {
     public void delete(@PathVariable Long id){
         viajeServiceImp.delete(id);
     }
+
+   /* @GetMapping("/{idUs}")
+    public List<ViajeGuardadoUsuario> viajesGuardados(@PathVariable int idUs){
+        return viajeServiceImp.viajesGuardados(idUs);
+    }*/
 }

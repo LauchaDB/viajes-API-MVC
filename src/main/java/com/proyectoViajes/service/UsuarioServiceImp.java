@@ -1,8 +1,7 @@
 package com.proyectoViajes.service;
 
-import com.proyectoViajes.model.Destino;
-import com.proyectoViajes.model.Usuario;
-import com.proyectoViajes.model.Viaje;
+
+import com.proyectoViajes.model.Users;
 import com.proyectoViajes.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,37 +16,37 @@ public class UsuarioServiceImp implements UsuarioService{
     private UsuarioRepository usuarioRepository;
 
     @Override
-    public Usuario save(Usuario usuario) {
-        return usuarioRepository.save(usuario);
+    public Users save(Users users) {
+        return usuarioRepository.save(users);
     }
 
     @Override
     public void delete(long id) {
-        Usuario usuarioDeBD = usuarioRepository.findById(id).orElseThrow(RuntimeException::new);
+        Users usersDeBD = usuarioRepository.findById(id).orElseThrow(RuntimeException::new);
         try {
-            usuarioRepository.delete(usuarioDeBD);
+            usuarioRepository.delete(usersDeBD);
         }catch(Exception e){
             //Logger.logMsg(1, e.getMessage());
         }
     }
 
     @Override
-    public List<Usuario> findAll() {
+    public List<Users> findAll() {
         return usuarioRepository.findAll();
     }
 
     @Override
-    public Usuario findById(long id) {
-        Optional<Usuario> optionalUsuario = usuarioRepository.findById(id);
+    public Users findById(long id) {
+        Optional<Users> optionalUsuario = usuarioRepository.findById(id);
         return optionalUsuario.isPresent() ? null : optionalUsuario.get();
     }
 
     @Override
-    public Usuario update(long id, Usuario usuario) {
-        Usuario usuarioDeBD = usuarioRepository.findById(id).orElseThrow(RuntimeException::new);
-        usuarioDeBD.setNombreUsuario(usuario.getNombreUsuario());
-        usuarioDeBD.setEmailUsuario(usuario.getEmailUsuario());
-        usuarioDeBD.setPassword(usuario.getPassword());
-        return usuarioRepository.save(usuarioDeBD);
+    public Users update(long id, Users users) {
+        Users usersDeBD = usuarioRepository.findById(id).orElseThrow(RuntimeException::new);
+        usersDeBD.setName(users.getName());
+        usersDeBD.setName(users.getMail());
+        usersDeBD.setPassword(users.getPassword());
+        return usuarioRepository.save(usersDeBD);
     }
 }

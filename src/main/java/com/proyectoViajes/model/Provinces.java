@@ -1,6 +1,6 @@
 package com.proyectoViajes.model;
 
-public enum Provincias {
+public enum Provinces {
     BuenosAires,
     Catamarca,
     Chaco,
@@ -22,5 +22,5 @@ public enum Provincias {
     SantaFe,
     SantiagoDelEstero,
     TierraDelFuego,
-    Tucumán
+    Tucumán;
 }

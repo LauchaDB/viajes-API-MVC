@@ -20,7 +20,7 @@ public class Viaje {
 
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "viajes")
     @JsonIgnore
-    public List<Usuario> usuarios = new ArrayList<>();
+    public List<Users> users = new ArrayList<>();
 
     public Viaje(){
     }
@@ -49,8 +49,8 @@ public class Viaje {
         return descripViaje;
     }
 
-    public void addUsuario(Usuario usr) {
-        usuarios.add(usr);
+    public void addUsuario(Users usr) {
+        users.add(usr);
     }
 
 }

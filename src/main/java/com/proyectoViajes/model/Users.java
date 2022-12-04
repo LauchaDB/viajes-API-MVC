@@ -4,16 +4,16 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name= "tbusuarios")
-public class Usuario {
+@Table(name= "users")
+public class Users {
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private long idUsuario;
+    private long id;
 
-    private String nombreUsuario;
+    private String name;
 
-    private String emailUsuario;
+    private String mail;
 
     private String password;
 
@@ -22,33 +22,34 @@ public class Usuario {
             @JoinColumn(name = "idUsuario", nullable = false, updatable = false) },
             inverseJoinColumns = { @JoinColumn(name = "idViaje",
                     nullable = false, updatable = false) })
-    public List<Viaje> viajes;
 
-    public Usuario(){
+    public List<Viaje> travels;
+
+    public Users(){
     }
 
-     public long getIdUsuario() {
-        return idUsuario;
+    public long getId() {
+        return id;
     }
 
-    public void setIdUsuario(long idUsuario) {
-        this.idUsuario = idUsuario;
+    public void setId(long id) {
+        this.id = id;
     }
 
-    public String getNombreUsuario() {
-        return nombreUsuario;
+    public String getName() {
+        return name;
     }
 
-    public void setNombreUsuario(String nombreUsuario) {
-        this.nombreUsuario = nombreUsuario;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getEmailUsuario() {
-        return emailUsuario;
+    public String getMail() {
+        return mail;
     }
 
-    public void setEmailUsuario(String emailUsuario) {
-        this.emailUsuario = emailUsuario;
+    public void setMail(String mail) {
+        this.mail = mail;
     }
 
     public String getPassword() {
@@ -59,8 +60,11 @@ public class Usuario {
         this.password = password;
     }
 
+    public List<Viaje> getTravels() {
+        return travels;
+    }
 
-    public void addViajes(Viaje viaje) {
-        viajes.add(viaje);
+    public void setTravels(List<Viaje> travels) {
+        this.travels = travels;
     }
 }

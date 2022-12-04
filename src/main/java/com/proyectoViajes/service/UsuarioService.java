@@ -1,7 +1,7 @@
 package com.proyectoViajes.service;
 
 
-import com.proyectoViajes.model.Usuario;
+import com.proyectoViajes.model.Users;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -9,9 +9,9 @@ import java.util.List;
 @Service
 public interface UsuarioService {
 
-    public Usuario save(Usuario usuario);
+    public Users save(Users users);
     public void delete(long id);
-    public List<Usuario> findAll();
-    public Usuario findById(long id);
-    public Usuario update(long id,Usuario usuario);
+    public List<Users> findAll();
+    public Users findById(long id);
+    public Users update(long id, Users users);
 }

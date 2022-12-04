@@ -1,7 +1,6 @@
 package com.proyectoViajes.service;
 
 
-import com.proyectoViajes.model.Destino;
 import com.proyectoViajes.model.Viaje;
 import org.springframework.stereotype.Service;
 

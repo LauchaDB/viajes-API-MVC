@@ -1,12 +1,9 @@
 package com.proyectoViajes.service;
 
-import com.proyectoViajes.model.Destino;
 import com.proyectoViajes.model.Viaje;
 import com.proyectoViajes.repository.ViajeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 

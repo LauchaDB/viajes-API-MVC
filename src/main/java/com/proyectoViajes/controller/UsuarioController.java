@@ -1,15 +1,9 @@
 package com.proyectoViajes.controller;
 
-import com.proyectoViajes.model.Usuario;
-import com.proyectoViajes.model.Viaje;
-import com.proyectoViajes.repository.UsuarioRepository;
-import com.proyectoViajes.repository.ViajeRepository;
-import com.proyectoViajes.service.UsuarioService;
+import com.proyectoViajes.model.Users;
 import com.proyectoViajes.service.UsuarioServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,19 +17,19 @@ public class UsuarioController {
     private UsuarioServiceImp usuarioServiceImp;
 
     @GetMapping("")
-    public List<Usuario> home(){
+    public List<Users> home(){
         return usuarioServiceImp.findAll();
     }
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/crate")
-    public Usuario create(@RequestBody Usuario usuario){
-        return usuarioServiceImp.save(usuario);
+    public Users create(@RequestBody Users users){
+        return usuarioServiceImp.save(users);
     }
 
     @PutMapping("/actualizar/{id}")
-    public Usuario update(@PathVariable Long id, @RequestBody Usuario usuario){
-        return usuarioServiceImp.update(id, usuario);
+    public Users update(@PathVariable Long id, @RequestBody Users users){
+        return usuarioServiceImp.update(id, users);
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
