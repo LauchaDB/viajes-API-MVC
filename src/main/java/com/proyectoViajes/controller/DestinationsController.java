@@ -11,36 +11,36 @@ import java.util.List;
 @CrossOrigin
 @RestController
 @RequestMapping("/destinos")
-public class DestinoController {
+public class DestinationsController {
 
     @Autowired
-    private DestinationsServiceImp destinoServiceImp;
+    private DestinationsServiceImp destinationServiceImp;
 
     @GetMapping("")
     public List<TravelDestinations> destinos(){
-        return destinoServiceImp.listAll();
+        return destinationServiceImp.listAll();
     }
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/create")
     public TravelDestinations create(@RequestBody TravelDestinations destino){
-        return destinoServiceImp.save(destino);
+        return destinationServiceImp.save(destino);
     }
 
     @PutMapping("/actualizar/{id}")
     public TravelDestinations update(@PathVariable Long id, @RequestBody TravelDestinations destino){
-        return destinoServiceImp.update(id, destino);
+        return destinationServiceImp.update(id, destino);
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/eliminar/{id}")
     public void delete(@PathVariable Long id){
-        destinoServiceImp.delete(id);
+        destinationServiceImp.delete(id);
 
     }
 
     @GetMapping("/destinosViaje/{id}")
     public List<TravelDestinations> destinosViaje(@PathVariable Long id){
-        return destinoServiceImp.destinosViaje(id);
+        return destinationServiceImp.destinosViaje(id);
     }
 }
