@@ -18,7 +18,7 @@ public class Travels {
 
     private String name;
 
-    private String descript;
+    private String description;
 
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "travels")
     @JsonIgnore
