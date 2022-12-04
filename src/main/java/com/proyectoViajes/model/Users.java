@@ -21,11 +21,10 @@ public class Users {
     private String password;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(name = "tbviajes_guardados_usuarios", joinColumns = {
-            @JoinColumn(name = "idUsuario", nullable = false, updatable = false) },
-            inverseJoinColumns = { @JoinColumn(name = "idViaje",
+    @JoinTable(name = "travels_users", joinColumns = {
+            @JoinColumn(name = "id", nullable = false, updatable = false) },
+            inverseJoinColumns = { @JoinColumn(name = "id",
                     nullable = false, updatable = false) })
-
     public List<Travels> travels;
 
     public Users(){
