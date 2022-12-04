@@ -59,7 +59,7 @@ public class DestinationsServiceImp implements DestinationsService {
     @Override
     public List<TravelDestinations> destinosViaje(Long id) {
         List<TravelDestinations> destinos = destinationsRepository.findAll();
-        destinos.removeIf(destino -> destino.getTravel().getIdViaje() != id);
+        destinos.removeIf(destino -> destino.getTravel().getId() != id);
         return destinos;
     }
 

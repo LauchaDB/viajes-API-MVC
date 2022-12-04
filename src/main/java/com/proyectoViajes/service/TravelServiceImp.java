@@ -31,10 +31,10 @@ public class TravelServiceImp implements TravelService {
 
     @Override
     public Travels update(long id, Travels travels) {
-        Travels travelsDeBD = travelRepository.findById(id).orElseThrow(RuntimeException::new);
-        travelsDeBD.setNameTravel(travels.getNameTravel());
-        travelsDeBD.setDescriptTravel(travels.getDescriptTravel());
-        return travelRepository.save(travelsDeBD);
+        Travels travel = travelRepository.findById(id).orElseThrow(RuntimeException::new);
+        travel.setName(travels.getName());
+        travel.setDescription(travels.getDescription());
+        return travelRepository.save(travel);
     }
 
     @Override
