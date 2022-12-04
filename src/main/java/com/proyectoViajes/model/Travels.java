@@ -23,9 +23,12 @@ public class Travels {
     @Column(name = "description")
     private String description;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_create")
+    private Users users;
+
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "travels")
-    @JsonIgnore
-    public List<Users> users = new ArrayList<>();
+    public List<Users> listUsers = new ArrayList<>();
 
     public Travels(){
     }

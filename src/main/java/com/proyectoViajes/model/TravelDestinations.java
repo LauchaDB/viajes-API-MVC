@@ -13,6 +13,7 @@ public class TravelDestinations {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private long id;
 
     @Enumerated(EnumType.STRING)
@@ -21,6 +22,7 @@ public class TravelDestinations {
     @Enumerated(EnumType.STRING)
     private City city;
 
+    @Column(name = "description")
     private String description;
 
     @OneToOne

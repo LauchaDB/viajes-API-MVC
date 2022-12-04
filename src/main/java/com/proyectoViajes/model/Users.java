@@ -26,8 +26,8 @@ public class Users {
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "travels_users", joinColumns = {
-            @JoinColumn(name = "id", nullable = false, updatable = false) },
-            inverseJoinColumns = { @JoinColumn(name = "id",
+            @JoinColumn(name = "user_id", nullable = false, updatable = false) },
+            inverseJoinColumns = { @JoinColumn(name = "travel_id",
                     nullable = false, updatable = false) })
     public List<Travels> travels;
 
