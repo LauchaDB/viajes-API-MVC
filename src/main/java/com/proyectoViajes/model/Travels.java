@@ -16,9 +16,9 @@ public class Travels {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private String nameTravel;
+    private String name;
 
-    private String descriptTravel;
+    private String descript;
 
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "travels")
     @JsonIgnore

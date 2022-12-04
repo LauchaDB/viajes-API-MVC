@@ -1,10 +1,13 @@
 package com.proyectoViajes.model;
 
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.awt.*;
 
 @Entity
+@Data
 @Table(name= "travelDestinations")
 public class TravelDestinations {
 
@@ -25,44 +28,4 @@ public class TravelDestinations {
     private Travels travel;
 
     public TravelDestinations() { }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public Provinces getProvinces() {
-        return provinces;
-    }
-
-    public void setProvinces(Provinces provinces) {
-        this.provinces = provinces;
-    }
-
-    public City getCity() {
-        return city;
-    }
-
-    public void setCity(City city) {
-        this.city = city;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Travels getTravel() {
-        return travel;
-    }
-
-    public void setTravel(Travels travel) {
-        this.travel = travel;
-    }
 }

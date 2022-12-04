@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name= "tbviajes_guardados_usuarios")
-public class ViajeGuardadoUsuario {
+public class FavoriteTravelUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,7 +14,7 @@ public class ViajeGuardadoUsuario {
 
     private int idViaje;
 
-    public ViajeGuardadoUsuario() {
+    public FavoriteTravelUser() {
     }
 
     public int getIdViajeGuardado() {
