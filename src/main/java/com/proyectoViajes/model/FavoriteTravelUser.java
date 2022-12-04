@@ -1,43 +1,22 @@
 package com.proyectoViajes.model;
 
+import lombok.Data;
+
 import javax.persistence.*;
 
 @Entity
+@Data
 @Table(name= "tbviajes_guardados_usuarios")
 public class FavoriteTravelUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idViajeGuardado;
+    private long id;
 
-    private int idUsuario;
+    private int idUser;
 
-    private int idViaje;
+    private int idTravel;
 
     public FavoriteTravelUser() {
-    }
-
-    public int getIdViajeGuardado() {
-        return idViajeGuardado;
-    }
-
-    public void setIdViajeGuardado(int idViajeGuardado) {
-        this.idViajeGuardado = idViajeGuardado;
-    }
-
-    public int getIdUsuario() {
-        return idUsuario;
-    }
-
-    public void setIdUsuario(int idUsuario) {
-        this.idUsuario = idUsuario;
-    }
-
-    public int getIdViaje() {
-        return idViaje;
-    }
-
-    public void setIdViaje(int idViaje) {
-        this.idViaje = idViaje;
     }
 }
