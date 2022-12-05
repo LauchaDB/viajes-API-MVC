@@ -1,11 +1,9 @@
 package com.proyectoViajes.service;
 
+import com.proyectoViajes.mapper.TravelsMapper;
 import com.proyectoViajes.model.Travels;
-import com.proyectoViajes.model.Users;
-import com.proyectoViajes.model.dto.CreateRequestTravelDTO;
+import com.proyectoViajes.model.dto.RequestCreateTravelDTO;
 import com.proyectoViajes.repository.TravelRepository;
-import com.proyectoViajes.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,21 +12,17 @@ import java.util.Optional;
 @Service
 public class TravelServiceImp implements TravelService {
 
-    @Autowired
-    private TravelRepository travelRepository;
-    @Autowired
-    private UserRepository userRepository;
+    private final TravelRepository travelRepository;
+    private final TravelsMapper travelsMapper;
+
+    public TravelServiceImp(TravelRepository travelRepository, TravelsMapper travelsMapper) {
+        this.travelRepository = travelRepository;
+        this.travelsMapper = travelsMapper;
+    }
 
     @Override
-    public Travels createTravel(CreateRequestTravelDTO travels) {
-        Optional<Users> user = userRepository.findById(Long.parseLong(travels.getIdUser()));
-
-        Travels travel = new Travels();
-        //travel.setId(1L);
-        travel.setDescription(travels.getDescription());
-        travel.setName(travels.getName());
-        travel.setUsers(user.isPresent() ? user.get() : null );
-
+    public Travels createTravel(RequestCreateTravelDTO travels) {
+        Travels travel = travelsMapper.requestCreateTravelDTOToTravels(travels);
         return travelRepository.save(travel);
     }
 

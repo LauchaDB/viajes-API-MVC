@@ -2,7 +2,7 @@ package com.proyectoViajes.service;
 
 
 import com.proyectoViajes.model.Travels;
-import com.proyectoViajes.model.dto.CreateRequestTravelDTO;
+import com.proyectoViajes.model.dto.RequestCreateTravelDTO;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,9 +10,9 @@ import java.util.List;
 @Service
 public interface TravelService {
 
-    public Travels createTravel(CreateRequestTravelDTO travels);
-    public void delete(long id);
-    public Travels update(long id, Travels travels);
-    public List<Travels> findAll();
-    public Travels findById(long id);
+    Travels createTravel(RequestCreateTravelDTO travels);
+    void delete(long id);
+    Travels update(long id, Travels travels);
+    List<Travels> findAll();
+    Travels findById(long id);
 }
