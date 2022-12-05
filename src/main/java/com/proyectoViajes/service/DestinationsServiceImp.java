@@ -20,24 +20,20 @@ public class DestinationsServiceImp implements DestinationsService {
         return destinationsRepository.findAll();
     }
 
-    @Override
+  /*  @Override
     public TravelDestinations listDestinationsById(long id) {
-        return null;
-    }
-
-    public TravelDestinations listDestinoById(long id) {
-        Optional<TravelDestinations> optionalDestino = destinationsRepository.findById(id);
-        return optionalDestino.isPresent() ? null : optionalDestino.get();
-    }
+        Optional<TravelDestinations> destination = destinationsRepository.findById(id);
+        return destination.isPresent() ? null : destination.get();
+    }*/
 
     @Override
-    public TravelDestinations update(long id, TravelDestinations destino) {
-        TravelDestinations destinoDeBD = destinationsRepository.findById(id).orElseThrow(RuntimeException::new);
-        destinoDeBD.setProvinces(destino.getProvinces());
-        destinoDeBD.setCity(destino.getCity());
-        destinoDeBD.setDescription(destino.getDescription());
-        destinoDeBD.setTravel(destino.getTravel());
-        return destinationsRepository.save(destinoDeBD);
+    public TravelDestinations update(long id, TravelDestinations destinationData) {
+        TravelDestinations destination = destinationsRepository.findById(id).orElseThrow(RuntimeException::new);
+        destination.setProvinces(destinationData.getProvinces());
+        destination.setCity(destinationData.getCity());
+        destination.setDescription(destinationData.getDescription());
+        destination.setTravel(destinationData.getTravel());
+        return destinationsRepository.save(destination);
     }
 
     @Override

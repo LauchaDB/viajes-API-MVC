@@ -2,10 +2,9 @@ package com.proyectoViajes.service;
 
 import com.proyectoViajes.model.Travels;
 import com.proyectoViajes.model.Users;
-import com.proyectoViajes.model.dto.CreateRequestDTO;
+import com.proyectoViajes.model.dto.CreateRequestTravelDTO;
 import com.proyectoViajes.repository.TravelRepository;
 import com.proyectoViajes.repository.UserRepository;
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +20,7 @@ public class TravelServiceImp implements TravelService {
     private UserRepository userRepository;
 
     @Override
-    public Travels createTravel(CreateRequestDTO travels) {
+    public Travels createTravel(CreateRequestTravelDTO travels) {
         Optional<Users> user = userRepository.findById(Long.parseLong(travels.getIdUser()));
 
         Travels travel = new Travels();

@@ -2,17 +2,17 @@ package com.proyectoViajes.model.dto;
 
 import java.math.BigDecimal;
 
-public class CreateRequestDTO {
+public class CreateRequestTravelDTO {
     private String name;
     private String description;
     private String idUser;
 
 
 
-    public CreateRequestDTO() {
+    public CreateRequestTravelDTO() {
 
     }
-    public CreateRequestDTO(String name, String description, String idUser) {
+    public CreateRequestTravelDTO(String name, String description, String idUser) {
         this.name = name;
         this.description = description;
         this.idUser = idUser;

@@ -10,9 +10,7 @@ public interface DestinationsService {
 
 
     public List<TravelDestinations> listAll();
-
-    public TravelDestinations listDestinationsById(long id);
-    public TravelDestinations update(long id, TravelDestinations destino);
+    public TravelDestinations update(long id, TravelDestinations destinationData);
     public TravelDestinations save(TravelDestinations destino);
 
     public void delete(long id);

@@ -1,7 +1,7 @@
 package com.proyectoViajes.controller;
 
 import com.proyectoViajes.model.Travels;
-import com.proyectoViajes.model.dto.CreateRequestDTO;
+import com.proyectoViajes.model.dto.CreateRequestTravelDTO;
 import com.proyectoViajes.service.TravelServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,9 +23,8 @@ public class TravelController {
     }
 
     @PostMapping("/create")
-    public Travels create(@RequestBody CreateRequestDTO travels){
-        Travels travel = travelServiceImp.createTravel(travels);
-        return travel;
+    public Travels create(@RequestBody CreateRequestTravelDTO travels){
+        return travelServiceImp.createTravel(travels);
     }
 
     @PutMapping("/update/{id}")
