@@ -27,19 +27,19 @@ public class DestinationsController {
         return destinationServiceImp.save(destino);
     }
 
-    @PutMapping("/actualizar/{id}")
+    @PutMapping("/update/{id}")
     public TravelDestinations update(@PathVariable Long id, @RequestBody TravelDestinations destino){
         return destinationServiceImp.update(id, destino);
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @DeleteMapping("/eliminar/{id}")
+    @DeleteMapping("/delete/{id}")
     public void delete(@PathVariable Long id){
         destinationServiceImp.delete(id);
 
     }
 
-    @GetMapping("/destinosViaje/{id}")
+    @GetMapping("/allTravels/{id}")
     public List<TravelDestinations> destinosViaje(@PathVariable Long id){
         return destinationServiceImp.destinosViaje(id);
     }

@@ -11,31 +11,30 @@ import java.util.List;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/viajes")
+@RequestMapping("/travel")
 public class TravelController {
 
     @Autowired
     private TravelServiceImp travelServiceImp;
 
-    @GetMapping("")
+    @GetMapping("/allTravels")
     public List<Travels> viajes(){
         return travelServiceImp.findAll();
     }
 
-    //@ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/create")
     public Travels create(@RequestBody CreateRequestDTO travels){
         Travels travel = travelServiceImp.createTravel(travels);
         return travel;
     }
 
-    @PutMapping("/actualizar/{id}")
+    @PutMapping("/update/{id}")
     public Travels update(@PathVariable Long id, @RequestBody Travels travels){
         return travelServiceImp.update(id, travels);
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @DeleteMapping("/eliminar/{id}")
+    @DeleteMapping("/delete/{id}")
     public void delete(@PathVariable Long id){
         travelServiceImp.delete(id);
     }
