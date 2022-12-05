@@ -18,7 +18,7 @@ public class TravelController {
     private TravelServiceImp travelServiceImp;
 
     @GetMapping("/allTravels")
-    public List<Travels> viajes(){
+    public List<Travels> allTravels(){
         return travelServiceImp.findAll();
     }
 

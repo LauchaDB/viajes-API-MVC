@@ -10,14 +10,14 @@ import java.util.List;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/destinos")
+@RequestMapping("/destination")
 public class DestinationsController {
 
     @Autowired
     private DestinationsServiceImp destinationServiceImp;
 
     @GetMapping("")
-    public List<TravelDestinations> destinos(){
+    public List<TravelDestinations> allDestinations(){
         return destinationServiceImp.listAll();
     }
 
@@ -39,8 +39,8 @@ public class DestinationsController {
 
     }
 
-    @GetMapping("/allTravels/{id}")
-    public List<TravelDestinations> destinosViaje(@PathVariable Long id){
+    @GetMapping("/allDestinations/{id}")
+    public List<TravelDestinations> allDestinations(@PathVariable Long id){
         return destinationServiceImp.destinosViaje(id);
     }
 }

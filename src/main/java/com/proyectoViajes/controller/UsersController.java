@@ -10,7 +10,7 @@ import java.util.List;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/usuarios")
+@RequestMapping("/user")
 public class UsersController {
 
     @Autowired
@@ -22,18 +22,18 @@ public class UsersController {
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping("/crate")
+    @PostMapping("/create")
     public Users create(@RequestBody Users users){
         return userServiceImpl.save(users);
     }
 
-    @PutMapping("/actualizar/{id}")
+    @PutMapping("/update/{id}")
     public Users update(@PathVariable Long id, @RequestBody Users users){
         return userServiceImpl.update(id, users);
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @DeleteMapping("/eliminar/{id}")
+    @DeleteMapping("/delete/{id}")
     public void delete(@PathVariable Long id){
         userServiceImpl.delete(id);
     }
