@@ -1,6 +1,5 @@
 package com.proyectoViajes.model;
 
-import lombok.Builder;
 import lombok.Data;
 
 import javax.persistence.CascadeType;
@@ -20,7 +19,6 @@ import java.util.List;
 @Entity
 @Data
 @Table(name= "travels")
-@Builder
 public class Travels {
 
     @Id
@@ -42,4 +40,5 @@ public class Travels {
 
     public Travels(){
     }
+
 }

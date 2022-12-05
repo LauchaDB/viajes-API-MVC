@@ -17,11 +17,11 @@ public class TravelsMapper {
 
     public Travels requestCreateTravelDTOToTravels(RequestCreateTravelDTO requestCreateTravelDTO) {
         Users user = findUser(requestCreateTravelDTO.getIdUser());
-        return Travels.builder()
-                .name(requestCreateTravelDTO.getName())
-                .description(requestCreateTravelDTO.getDescription())
-                .users(user)
-                .build();
+        Travels travel = new Travels();
+        travel.setName(requestCreateTravelDTO.getName());
+        travel.setDescription(requestCreateTravelDTO.getDescription());
+        travel.setUsers(user);
+        return travel;
     }
 
     private Users findUser(String id) {
