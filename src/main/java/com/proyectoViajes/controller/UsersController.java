@@ -12,7 +12,7 @@ import java.util.List;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/usuarios")
+@RequestMapping("/users")
 public class UsersController {
 
     @Autowired
@@ -23,18 +23,17 @@ public class UsersController {
         return new ResponseEntity<>(userServiceImpl.findAll(), null, HttpStatus.OK) ;
     }
 
-    @PostMapping("/crate")
+    @PostMapping("/create")
     public ResponseEntity<Users> create(@RequestBody RequestCreateUsersDTO users){
         return new ResponseEntity<>(userServiceImpl.save(users), null, HttpStatus.OK);
     }
 
-    @PutMapping("/actualizar/{id}")
+    @PutMapping("/update/{id}")
     public ResponseEntity<Users> update(@PathVariable Long id, @RequestBody Users users){
         return new ResponseEntity<>(userServiceImpl.update(id, users), null, HttpStatus.OK);
     }
 
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    @DeleteMapping("/eliminar/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity delete(@PathVariable Long id){
         userServiceImpl.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
