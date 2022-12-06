@@ -22,8 +22,8 @@ public class TravelServiceImp implements TravelService {
     }
 
     @Override
-    public Travels createTravel(RequestCreateTravelDTO travels) {
-        Travels travel = travelsMapper.requestCreateTravelDTOToTravels(travels);
+    public Travels createTravel(RequestCreateTravelDTO travelsDTO) {
+        Travels travel = travelsMapper.requestCreateTravelDTOToTravels(travelsDTO);
         return travelRepository.save(travel);
     }
 

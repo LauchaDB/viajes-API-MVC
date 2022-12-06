@@ -3,7 +3,9 @@ package com.proyectoViajes.controller;
 import com.proyectoViajes.model.Travels;
 import com.proyectoViajes.model.dto.RequestCreateTravelDTO;
 import com.proyectoViajes.service.TravelServiceImp;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,23 +31,23 @@ public class TravelController {
     }
 
     @GetMapping("/allTravels")
-    public List<RequestCreateTravelDTO> viajes(){
-        return travelServiceImp.findAll();
+    public ResponseEntity<List<RequestCreateTravelDTO>> viajes(){
+        return new ResponseEntity<>(travelServiceImp.findAll(), null, HttpStatus.OK) ;
     }
 
     @PostMapping("/create")
-    public Travels create(@RequestBody RequestCreateTravelDTO travels){
-        return travelServiceImp.createTravel(travels);
+    public ResponseEntity<Travels> create(@RequestBody RequestCreateTravelDTO travelsDTO){
+        return new ResponseEntity<>(travelServiceImp.createTravel(travelsDTO),null,HttpStatus.OK);
     }
 
     @PutMapping("/update/{id}")
-    public Travels update(@PathVariable Long id, @RequestBody Travels travels){
-        return travelServiceImp.update(id, travels);
+    public ResponseEntity<Travels> update(@PathVariable Long id, @RequestBody Travels travels){
+        return new ResponseEntity<>(travelServiceImp.update(id, travels), null, HttpStatus.OK);
     }
 
-    @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/delete/{id}")
-    public void delete(@PathVariable Long id){
+    public ResponseEntity delete(@PathVariable Long id){
         travelServiceImp.delete(id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
