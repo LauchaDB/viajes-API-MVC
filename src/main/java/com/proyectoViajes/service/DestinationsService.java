@@ -1,6 +1,7 @@
 package com.proyectoViajes.service;
 
 import com.proyectoViajes.model.TravelDestinations;
+import com.proyectoViajes.model.dto.RequestCreateTravelDestinationsDTO;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,7 +14,7 @@ public interface DestinationsService {
 
     public TravelDestinations listDestinationsById(long id);
     public TravelDestinations update(long id, TravelDestinations destino);
-    public TravelDestinations save(TravelDestinations destino);
+    public TravelDestinations createTravelDestinations(RequestCreateTravelDestinationsDTO destino);
 
     public void delete(long id);
 

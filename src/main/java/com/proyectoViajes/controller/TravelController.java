@@ -29,7 +29,7 @@ public class TravelController {
     }
 
     @GetMapping("/allTravels")
-    public List<Travels> viajes(){
+    public List<RequestCreateTravelDTO> viajes(){
         return travelServiceImp.findAll();
     }
 

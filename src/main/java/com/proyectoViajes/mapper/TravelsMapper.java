@@ -6,6 +6,9 @@ import com.proyectoViajes.model.dto.RequestCreateTravelDTO;
 import com.proyectoViajes.repository.UserRepository;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Component
 public class TravelsMapper {
 
@@ -26,6 +29,22 @@ public class TravelsMapper {
 
     private Users findUser(String id) {
         return userRepository.findById(Long.parseLong(id)).orElse(null);
+    }
+
+    public RequestCreateTravelDTO travelsToRequestCreateTravelDTO(Travels travels){
+        RequestCreateTravelDTO requestCreateTravelDTO = new RequestCreateTravelDTO();
+        requestCreateTravelDTO.setName(travels.getName());
+        requestCreateTravelDTO.setDescription(travels.getDescription());
+        requestCreateTravelDTO.setIdUser(String.valueOf(travels.getUsers().getId()));
+        return requestCreateTravelDTO;
+    }
+
+    public List<RequestCreateTravelDTO> listTravelsToListRequestCreateTravelDTO(List<Travels> listTravels){
+        List<RequestCreateTravelDTO> listRequestCreateTravelDTO = new ArrayList<>();
+        for (Travels travel: listTravels) {
+            listRequestCreateTravelDTO.add(travelsToRequestCreateTravelDTO(travel));
+        }
+        return listRequestCreateTravelDTO;
     }
 
 }

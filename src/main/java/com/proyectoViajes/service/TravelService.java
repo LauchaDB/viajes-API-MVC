@@ -13,6 +13,6 @@ public interface TravelService {
     Travels createTravel(RequestCreateTravelDTO travels);
     void delete(long id);
     Travels update(long id, Travels travels);
-    List<Travels> findAll();
+    List<RequestCreateTravelDTO> findAll();
     Travels findById(long id);
 }

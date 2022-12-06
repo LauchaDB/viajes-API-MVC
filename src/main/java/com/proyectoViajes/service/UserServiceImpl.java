@@ -1,9 +1,10 @@
 package com.proyectoViajes.service;
 
 
+import com.proyectoViajes.mapper.UsersMapper;
 import com.proyectoViajes.model.Users;
+import com.proyectoViajes.model.dto.RequestCreateUsersDTO;
 import com.proyectoViajes.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,12 +13,19 @@ import java.util.Optional;
 @Service
 public class UserServiceImpl implements UserService {
 
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
+
+    private final UsersMapper usersMapper;
+
+    public UserServiceImpl(UserRepository userRepository, UsersMapper usersMapper) {
+        this.userRepository = userRepository;
+        this.usersMapper = usersMapper;
+    }
 
     @Override
-    public Users save(Users users) {
-        return userRepository.save(users);
+    public Users save(RequestCreateUsersDTO userDTO) {
+        Users user = usersMapper.requestCreateUsersDTOToUser(userDTO);
+        return userRepository.save(user);
     }
 
     @Override

@@ -6,6 +6,7 @@ import com.proyectoViajes.model.dto.RequestCreateTravelDTO;
 import com.proyectoViajes.repository.TravelRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -45,8 +46,9 @@ public class TravelServiceImp implements TravelService {
     }
 
     @Override
-    public List<Travels> findAll() {
-        return travelRepository.findAll();
+    public List<RequestCreateTravelDTO> findAll() {
+        List<RequestCreateTravelDTO> listRequestCreateTravelDTO = travelsMapper.listTravelsToListRequestCreateTravelDTO(travelRepository.findAll());
+        return listRequestCreateTravelDTO;
     }
 
     @Override

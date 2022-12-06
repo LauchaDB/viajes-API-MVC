@@ -1,7 +1,11 @@
 package com.proyectoViajes.service;
 
+import com.proyectoViajes.mapper.TravelDestinationMapper;
+import com.proyectoViajes.mapper.TravelsMapper;
 import com.proyectoViajes.model.TravelDestinations;
+import com.proyectoViajes.model.dto.RequestCreateTravelDestinationsDTO;
 import com.proyectoViajes.repository.DestinationsRepository;
+import com.proyectoViajes.repository.TravelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,9 +15,14 @@ import java.util.Optional;
 @Service
 public class DestinationsServiceImp implements DestinationsService {
 
-    @Autowired
-    private DestinationsRepository destinationsRepository;
+    private final DestinationsRepository destinationsRepository;
 
+    private final TravelDestinationMapper travelDestinationMapper;
+
+    public DestinationsServiceImp(DestinationsRepository destinationsRepository, TravelDestinationMapper travelDestinationMapper) {
+        this.destinationsRepository = destinationsRepository;
+        this.travelDestinationMapper = travelDestinationMapper;
+    }
 
     @Override
     public List<TravelDestinations> listAll() {
@@ -41,8 +50,9 @@ public class DestinationsServiceImp implements DestinationsService {
     }
 
     @Override
-    public TravelDestinations save(TravelDestinations destino) {
-        return destinationsRepository.save(destino);
+    public TravelDestinations createTravelDestinations(RequestCreateTravelDestinationsDTO destino) {
+        TravelDestinations travelDestinations = travelDestinationMapper.requestCreateTravelDestinationDTOToTravelDestinations(destino);
+        return destinationsRepository.save(travelDestinations);
     }
 
     @Override

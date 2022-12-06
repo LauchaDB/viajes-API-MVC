@@ -1,6 +1,7 @@
 package com.proyectoViajes.controller;
 
 import com.proyectoViajes.model.Users;
+import com.proyectoViajes.model.dto.RequestCreateUsersDTO;
 import com.proyectoViajes.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,7 +24,7 @@ public class UsersController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/crate")
-    public Users create(@RequestBody Users users){
+    public Users create(@RequestBody RequestCreateUsersDTO users){
         return userServiceImpl.save(users);
     }
 
