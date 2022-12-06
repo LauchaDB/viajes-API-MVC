@@ -2,7 +2,9 @@ package com.proyectoViajes.mapper;
 
 import com.proyectoViajes.model.Users;
 import com.proyectoViajes.model.dto.RequestCreateUsersDTO;
+import org.springframework.stereotype.Component;
 
+@Component
 public class UsersMapper {
 
     public Users requestCreateUsersDTOToUser(RequestCreateUsersDTO requestCreateUsersDTO){
